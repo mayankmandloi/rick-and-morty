@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+  }
+
+  state = {
+    charList: [],
+    filters: [],
+    nextPageUrl: '',
+    previousPageUrl: '',
+    totalPage: 0
+  };
+
+  async componentDidMount () {
+    let response = await fetch ('https://rickandmortyapi.com/api/character');
+    response = await response.json();
+    const {results, info:{next, previous, count}} = response;
+    this.setState({
+      charList: results,
+      nextPageUrl: next,
+      previousPageUrl: previous,
+      totalPage: count
+    })
+    console.log(results, next, previous, count);
+  }
+
+  render () {
+    return ('test');
+  }
 }
 
 export default App;
