@@ -1,7 +1,7 @@
 import React from 'react'
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle,
+    CardTitle, CardSubtitle, CardImgOverlay,
     Row, Col, Table
 } from 'reactstrap';
 

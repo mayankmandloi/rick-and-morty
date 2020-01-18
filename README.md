@@ -8,7 +8,7 @@ Develop a front-end application which would let the users help list and browse a
 
 ### Key Features:
     • Visually interactive responsive design listing all the characters.
-        ◦ Mobile should be of 2 column design while desktop and Tablet should have 4 columns.
+    • Mobile should be of 2 column design while desktop and Tablet should have 4 columns.
     • Make sure the standard Web development NFRs are taken care.
     • Implement Sort feature (to filter through ‘id’ in ascending and descending order).
     • Implement Filters to filter out data based on Species and Gender.
@@ -18,7 +18,7 @@ Develop a front-end application which would let the users help list and browse a
 
 ## Things not yet covered
 * CSS
-* Pagination
-* Sort By Id
+* Mobile Design
 * Code clean up
 * Refactor
+* Bug Fixing

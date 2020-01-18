@@ -8,7 +8,7 @@ export const Filter = (props) => {
         };
 
         return (
-            <FormGroup>
+            <FormGroup key={searchParam[0]}>
                 <label
                     key={searchParam[0]}
                 >

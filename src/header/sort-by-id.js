@@ -18,7 +18,12 @@ export class SortById extends Component {
                     sort:'asc'
                 })
             }
+            this.props.sorter(this.state.sort);
         }
-        return <span class="glyphicon glyphicon-arrow-up"></span>;
+        const sort = () => {
+            const order = this.state.sort === 'asc' ? '(dsc)' : '(asc)';
+            return (<span onClick={changeSort} className={'float-right btn btn-secondary'}>Sort By Id{order}</span>)
+        }
+        return  sort() ;
     }
 }

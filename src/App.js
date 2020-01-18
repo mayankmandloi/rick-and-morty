@@ -5,6 +5,7 @@ import {Row, Col} from 'reactstrap';
 import { CharacterListWrpper } from './charater-list/character-list-wrapper'
 import './App.css';
 import { Filter } from './filters/filter';
+import { Header } from './header/header';
 
 class App extends Component {
   constructor(props) {
@@ -48,19 +49,15 @@ class App extends Component {
   }
 
   fetchAndUpdate = async () => {
-    const searchParams = new URLSearchParams(this.props.location.search);
-    // for (let qu of searchParams.entries()) {
-    //   console.log(qu);
-    // }
     let response = await fetch(`https://rickandmortyapi.com/api/character${this.props.location.search}`);
     response = await response.json();
-    const { results, info: { next, previous, count } } = response;
+    const { results, info: { next, prev, count } } = response;
     if (results) {
       this.setState({
         charList: results,
         originalCharList: results,
         nextPageUrl: next,
-        previousPageUrl: previous,
+        previousPageUrl: prev,
         totalPage: count
       },this.updateOriginFilter);
     }
@@ -122,10 +119,31 @@ class App extends Component {
         apiFilterList.push(<Filter key={item} filter={this.state.filters} filterType={item} onClick={setFilter}/>)
       }
       return apiFilterList;
-  }
+    }
+    const sorter = (order) => {
+      const sortedCharList = [...this.state.originalCharList].sort((a,b) => {
+        if(order === 'asc')
+        {
+          return a.id-b.id;
+        }
+        else {
+          return b.id-a.id;
+        }
+      });
+      this.setState({
+        charList: sortedCharList
+      })
+    }
 
     return (
       <div className={'container-fluid'}>
+        <Header
+          sorter={sorter}
+          filters={[this.state.filters, this.state.onPageFilter]}
+          update={this.fetchAndUpdate}
+          next={this.state.nextPageUrl}
+          previous={this.state.previousPageUrl}
+        />
       <Row>
         <Col xs='12' sm='3'>
             <nav className={'sticky-top'}>
