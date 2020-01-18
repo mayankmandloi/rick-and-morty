@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {CharacterListWrpper} from './charater-list/character-list-wrapper'
 import './App.css';
 
 class App extends Component {
@@ -31,8 +32,7 @@ class App extends Component {
   }
 
   render () {
-    const listOfname = this.state.charList.map(char => <li>{char.name}</li>);
-    return (<ul>{listOfname}</ul>);
+    return <CharacterListWrpper charList={this.state.charList}/>;
   }
 }
 
