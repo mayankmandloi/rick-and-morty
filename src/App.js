@@ -14,11 +14,11 @@ class App extends Component {
       charList: [],
       originalCharList:[],
       filters: {
-        gender: [
-          ['male', false],
-          ['female', false]
+        Gender: [
+          ['Male', false],
+          ['Female', false]
         ],
-        species: [
+        Species: [
           ['Human', false],
           ['Alien', false],
           ['Humanoid', false],

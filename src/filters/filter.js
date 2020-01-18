@@ -11,12 +11,14 @@ export const Filter = (props) => {
             <FormGroup key={searchParam[0]}>
                 <label
                     key={searchParam[0]}
+                    className={'rm-filter-label'}
                 >
                     <input
                         checked={searchParam[1]}
                         name={searchParam[0]}
                         type='checkbox'
                         onChange={clickHandler}
+                        className={'rm-filter-input'}
                     />
                     {searchParam[0]}
                 </label>

@@ -18,27 +18,29 @@ export const CharacterListWrpper = (props) => {
                 <Card className={'bg-secondary'}>
                     <CardImg top width='100%' src={char.image} alt={char.name} />
                     <CardBody>
-                        <CardTitle><h3>{char.name}</h3> <span>id: {char.id}</span> <span>created : {yearDiff}</span></CardTitle>
-                        <CardSubtitle>location: {char.origin.name} </CardSubtitle>
+                        <CardImgOverlay>
+                        <CardTitle className={'rm-card-title'}><h6>{char.name}</h6> <p>id: {char.id}</p> <p>created : {yearDiff}</p>
+                        </CardTitle>
+                        </CardImgOverlay>
                         <CardText>
-                            <Table className={'table-sm'}>
+                            <Table size="sm" hover className={'rm-stat-table'}>
                                 <tbody>
                                 <tr>
                                     <td>STATUS</td>
-                                    <td>{char.status}</td>
+                                    <td className={'rm-stat-table-data'}>{char.status}</td>
                                 </tr>
                                 <tr>
                                     <td>SPECIES</td>
-                                    <td>{char.species}</td>
+                                    <td className={'rm-stat-table-data'}>{char.species}</td>
                                 </tr><tr>
                                     <td>GENDER</td>
-                                    <td>{char.gender}</td>
+                                    <td className={'rm-stat-table-data'}>{char.gender}</td>
                                 </tr><tr>
                                     <td>ORIGIN</td>
-                                    <td>{char.origin.name}</td>
+                                    <td className={'rm-stat-table-data'}>{char.origin.name}</td>
                                 </tr><tr>
                                     <td>LAST LOCATION</td>
-                                    <td>{char.location.name}</td>
+                                    <td className={'rm-stat-table-data'}>{char.location.name}</td>
                                 </tr>
                                 </tbody>
                             </Table>

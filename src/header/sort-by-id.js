@@ -22,7 +22,7 @@ export class SortById extends Component {
         }
         const sort = () => {
             const order = this.state.sort === 'asc' ? '(dsc)' : '(asc)';
-            return (<span onClick={changeSort} className={'float-right btn btn-secondary'}>Sort By Id{order}</span>)
+            return (<span onClick={changeSort} className={'rm-sort-by btn btn-secondary'}>Sort By Id{order}</span>)
         }
         return  sort() ;
     }

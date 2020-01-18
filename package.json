@@ -138,6 +138,10 @@
     "presets": [
       "react-app",
       "@babel/preset-env"
+    ],
+    "plugins": [
+      "transform-class-properties",
+      "transform-object-rest-spread"
     ]
   },
   "devDependencies": {
