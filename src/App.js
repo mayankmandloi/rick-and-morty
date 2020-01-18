@@ -18,17 +18,21 @@ class App extends Component {
     let response = await fetch ('https://rickandmortyapi.com/api/character');
     response = await response.json();
     const {results, info:{next, previous, count}} = response;
-    this.setState({
-      charList: results,
-      nextPageUrl: next,
-      previousPageUrl: previous,
-      totalPage: count
-    })
+    if(results)
+    {
+      this.setState({
+        charList: results,
+        nextPageUrl: next,
+        previousPageUrl: previous,
+        totalPage: count
+      });
+    }
     console.log(results, next, previous, count);
   }
 
   render () {
-    return ('test');
+    const listOfname = this.state.charList.map(char => <li>{char.name}</li>);
+    return (<ul>{listOfname}</ul>);
   }
 }
 
