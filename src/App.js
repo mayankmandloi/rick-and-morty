@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter} from 'react-router-dom';
+import {Row, Col} from 'reactstrap';
 
 import { CharacterListWrpper } from './charater-list/character-list-wrapper'
 import './App.css';
@@ -92,10 +93,12 @@ class App extends Component {
   }
 
     return (
-      <>
-        {filterWrapper()}
-        <CharacterListWrpper charList={this.state.charList} />
-      </>
+      <div className={'container-fluid'}>
+      <Row>
+        <Col xs='12' sm='3'><nav className={'sticky-top'}>{filterWrapper()}</nav></Col>
+        <Col xs='12' sm='9'><CharacterListWrpper charList={this.state.charList} /></Col>
+      </Row>
+      </div>
     );
   }
 }

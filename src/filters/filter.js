@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Jumbotron, FormGroup } from 'reactstrap';
 export const Filter = (props) => {
     const filter = (searchParam) => {
 
@@ -7,19 +8,24 @@ export const Filter = (props) => {
         };
 
         return (
-            <label
-                key={searchParam[0]}
-            >
-                <input
-                    checked={searchParam[1]}
-                    name={searchParam[0]}
-                    type='checkbox'
-                    onChange={clickHandler}
-                />
-                {searchParam[0]}
-            </label>
+            <FormGroup>
+                <label
+                    key={searchParam[0]}
+                >
+                    <input
+                        checked={searchParam[1]}
+                        name={searchParam[0]}
+                        type='checkbox'
+                        onChange={clickHandler}
+                    />
+                    {searchParam[0]}
+                </label>
+            </FormGroup>
         )
     }
     const filterList = props.filter[props.filterType].map(item => filter(item))
-    return filterList;
+    return (<Jumbotron>
+        <h3>{props.filterType}</h3>
+        {filterList}
+    </Jumbotron>);
 }
