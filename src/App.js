@@ -11,6 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       charList: [],
+      originalCharList:[],
       filters: {
         gender: [
           ['male', false],
@@ -32,23 +33,37 @@ class App extends Component {
     };
   }
 
+  updateOriginFilter = ()=> {
+    let arr= [];
+    this.state.charList.forEach((item) => {
+      arr.push(item.origin.name)
+    })
+    arr = [...new Set(arr)];
+    const origin = arr.map(item => [item, false]);
+    this.setState({
+      onPageFilter:{
+        origin
+      }
+    })
+  }
+
   fetchAndUpdate = async () => {
     const searchParams = new URLSearchParams(this.props.location.search);
-    for (let qu of searchParams.entries()) {
-      console.log(qu);
-    }
+    // for (let qu of searchParams.entries()) {
+    //   console.log(qu);
+    // }
     let response = await fetch(`https://rickandmortyapi.com/api/character${this.props.location.search}`);
     response = await response.json();
     const { results, info: { next, previous, count } } = response;
     if (results) {
       this.setState({
         charList: results,
+        originalCharList: results,
         nextPageUrl: next,
         previousPageUrl: previous,
         totalPage: count
-      });
+      },this.updateOriginFilter);
     }
-    console.log(results, next, previous, count);
   }
 
   componentDidMount() {
@@ -70,6 +85,24 @@ class App extends Component {
 
     }
 
+    const setLocalFilter = (filterList, updatedFilter, type) => {
+      updatedFilter[1] = !updatedFilter[1];
+      filterList[type] = [...filterList[type]];
+      const selectedFilter = filterList[type].map(item => {
+        if(item[1]) return item[0];});
+      console.log(selectedFilter[0]);
+      let charList = this.state.originalCharList.filter(item => {
+        return selectedFilter.some(itemFilter => itemFilter === item.origin.name);
+      });
+      if(charList.length === 0 || selectedFilter.length === 0){
+        charList = this.state.originalCharList;
+      }
+      if (updatedFilter)
+        this.setState({
+          charList,
+          onPageFilter: filterList
+        });
+    }
     const setFilter = (filterList, updatedFilter, type) => {
       const newValue = !updatedFilter[1];
       filterList[type].forEach(item => item[1] = false);
@@ -88,14 +121,18 @@ class App extends Component {
       {
         apiFilterList.push(<Filter key={item} filter={this.state.filters} filterType={item} onClick={setFilter}/>)
       }
-      console.log(apiFilterList);
       return apiFilterList;
   }
 
     return (
       <div className={'container-fluid'}>
       <Row>
-        <Col xs='12' sm='3'><nav className={'sticky-top'}>{filterWrapper()}</nav></Col>
+        <Col xs='12' sm='3'>
+            <nav className={'sticky-top'}>
+              {filterWrapper()}
+              <Filter filter={this.state.onPageFilter} filterType={'origin'} onClick={setLocalFilter}/>
+            </nav>
+          </Col>
         <Col xs='12' sm='9'><CharacterListWrpper charList={this.state.charList} /></Col>
       </Row>
       </div>

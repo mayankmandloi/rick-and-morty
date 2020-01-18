@@ -22,6 +22,7 @@ export const CharacterListWrpper = (props) => {
                         <CardSubtitle>location: {char.origin.name} </CardSubtitle>
                         <CardText>
                             <Table className={'table-sm'}>
+                                <tbody>
                                 <tr>
                                     <td>STATUS</td>
                                     <td>{char.status}</td>
@@ -39,6 +40,7 @@ export const CharacterListWrpper = (props) => {
                                     <td>LAST LOCATION</td>
                                     <td>{char.location.name}</td>
                                 </tr>
+                                </tbody>
                             </Table>
                         </CardText>
                     </CardBody>

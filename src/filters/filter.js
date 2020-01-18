@@ -1,5 +1,5 @@
 import React from 'react';
-import { Jumbotron, FormGroup } from 'reactstrap';
+import { Form, FormGroup } from 'reactstrap';
 export const Filter = (props) => {
     const filter = (searchParam) => {
 
@@ -24,8 +24,8 @@ export const Filter = (props) => {
         )
     }
     const filterList = props.filter[props.filterType].map(item => filter(item))
-    return (<Jumbotron>
+    return (<Form>
         <h3>{props.filterType}</h3>
         {filterList}
-    </Jumbotron>);
+    </Form>);
 }
