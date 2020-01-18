@@ -17,8 +17,8 @@ Develop a front-end application which would let the users help list and browse a
     • You may add portfolio activity comprising awesome work you have done on web application(s)
 
 ## Things not yet covered
-    * CSS
-    * Pagination
-    * Sort By Id
-    * Code clean up
-    * Refactor
+* CSS
+* Pagination
+* Sort By Id
+* Code clean up
+* Refactor
