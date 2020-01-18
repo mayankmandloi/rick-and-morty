@@ -3,7 +3,6 @@ import { withRouter} from 'react-router-dom';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 const prevNext = (props) => {
-    console.log(props);
     const next = async () => {
         await props.history.push(props.next.slice(props.next.indexOf('?')))
         props.update();

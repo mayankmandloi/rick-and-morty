@@ -14,7 +14,6 @@ export const Header = (props) => {
             })
         }
     });
-    console.log(avaliableFilters);
     const filterBagde = avaliableFilters.map(item => <Badge color="dark" className={'mr-2'}>{item}</Badge>)
     return (
         <header className={'jumbotron'}>

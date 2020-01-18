@@ -14,11 +14,11 @@ class App extends Component {
       charList: [],
       originalCharList:[],
       filters: {
-        Gender: [
-          ['Male', false],
-          ['Female', false]
+        gender: [
+          ['male', false],
+          ['female', false]
         ],
-        Species: [
+        species: [
           ['Human', false],
           ['Alien', false],
           ['Humanoid', false],
@@ -87,7 +87,6 @@ class App extends Component {
       filterList[type] = [...filterList[type]];
       const selectedFilter = filterList[type].map(item => {
         if(item[1]) return item[0];});
-      console.log(selectedFilter[0]);
       let charList = this.state.originalCharList.filter(item => {
         return selectedFilter.some(itemFilter => itemFilter === item.origin.name);
       });
