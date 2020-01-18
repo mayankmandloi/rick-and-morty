@@ -1,6 +1,6 @@
 # Problem Statement
 Develop a front-end application which would let the users help list and browse all Characters of Rick and Morty Show.
-# Minimum Requirement
+## Minimum Requirement
     — Use of Web API to fetch Characters details.
 ## Response Parameters to be used:
 
@@ -14,7 +14,11 @@ Develop a front-end application which would let the users help list and browse a
     • Implement Filters to filter out data based on Species and Gender.
     • Custom elegant design, fonts and icons to make web app more user-friendly.
     • Use your imagination and add features which would make things easier for end users.
-    • You may add portfolio activity comprising awesome work you have done on web application(s).
-Build and local environment set-up requirements:
-    • Some bundling package should be used to deliver the static assets for the web page, preferably Webpack.
-    • Standard Linting processes should be set as part of local dev environment which should run with build process.
+    • You may add portfolio activity comprising awesome work you have done on web application(s)
+
+## Things not yet covered
+    * CSS
+    * Pagination
+    * Sort By Id
+    * Code clean up
+    * Refactor
