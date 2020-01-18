@@ -14,8 +14,8 @@ export const CharacterListWrpper = (props) => {
     const character = (char) => {
         const yearDiff = yearCalculator(char.created)
         return (
-            <Col xs='6' sm='3' key={char.id} className={'mb-4'}>
-                <Card>
+            <Col xs='6' sm='3' key={char.id} className={'mb-4'} >
+                <Card className={'bg-secondary'}>
                     <CardImg top width='100%' src={char.image} alt={char.name} />
                     <CardBody>
                         <CardTitle><h3>{char.name}</h3> <span>id: {char.id}</span> <span>created : {yearDiff}</span></CardTitle>
